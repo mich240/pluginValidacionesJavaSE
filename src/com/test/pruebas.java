@@ -1,4 +1,4 @@
-package com.pruebas.validar;
+package com.test;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -19,8 +19,9 @@ import org.dyno.visual.swing.layouts.Constraints;
 import org.dyno.visual.swing.layouts.GroupLayout;
 import org.dyno.visual.swing.layouts.Leading;
 
-import com.JavaValidaciones.ValidacionesDeCampos.Validaciones;
 import com.utilidades.util.util;
+import com.validate.field.Comportamiento;
+import com.validate.field.validate;
 
 //VS4E -- DO NOT REMOVE THIS LINE!
 public class pruebas extends JFrame {
@@ -38,8 +39,8 @@ public class pruebas extends JFrame {
 	private static final String PREFERRED_LOOK_AND_FEEL = "javax.swing.plaf.metal.MetalLookAndFeel";
 	public pruebas() {
 		initComponents();
-		Validaciones.ValidacionesGenerales(getJTextField0(),10,util.AlfaNumerico,
-											getJTextField1(),10,util.Numerico);
+		validate.addComportamiento(getJTextField0(),3,util.NUMBER_AND_LETTER,
+											getJTextField1(),3,util.NUMBER);
 		
 	}
 
@@ -168,11 +169,11 @@ public class pruebas extends JFrame {
 	}
 
 	private void jButton0ActionActionPerformed(ActionEvent event) {
-	util.VaciarCampos(jTextField0,jTextField1,getJComboBox0());
+	validate.restablecerCampos(jTextField0,jTextField1,getJComboBox0());
 	}
 
 	private void jButton1ActionActionPerformed(ActionEvent event) {
-	if (Validaciones.ValidarCamposVaciosEspaciosJcombos("No se aceptan msj vacios", "No se aceptan espacios en los inicios", "Selecione una opcion", 
+	if (validate.ValidarCamposVaciosEspaciosJcombos("No se aceptan msj vacios", "No se aceptan espacios en los inicios", "Selecione una opcion", 
 			getJTextField0(),getJTextField1(),getJComboBox0())) {
 		JOptionPane.showMessageDialog(null, "Se envio correctamente");		
 	}

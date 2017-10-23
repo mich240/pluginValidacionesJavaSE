@@ -1,4 +1,4 @@
-package com.JavaValidaciones.ValidacionesDeCampos;
+package com.validate.field;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -13,15 +13,14 @@ import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.text.JTextComponent;
 
-public class Validaciones {
+public class validate {
 	private static int cantidad = 0;
 	private static int tipo = 0;
 	private static Component componente = null;
-	private static Border bordeRojo = BorderFactory.createLineBorder(Color.RED,2);
+	private static Border bordeRojo = BorderFactory.createLineBorder(Color.RED, 2);
 	private static Border borde_por_defecto;
 
-
-	public static void ValidacionesGenerales(Object... Campo_Limite_TipoValidacion) {
+	public static void addComportamiento(Object... Campo_Limite_TipoValidacion) {
 		int a = 0, b = 1, c = 2;
 		for (int i = 0; i < Campo_Limite_TipoValidacion.length; i++) {
 			if (i % 3 == 0) {
@@ -35,6 +34,18 @@ public class Validaciones {
 			}
 		}
 	}
+	
+	public static void restablecerCampos(Object... campos) {
+		for (final Object a : campos) {
+			if (a instanceof JTextComponent) {
+				((JTextComponent) a).setText("");
+			}
+			if (a instanceof JComboBox) {
+				((JComboBox<?>) a).setSelectedIndex(0);
+			}
+		}
+	}
+
 	private static void cargaValida(Object valor) {
 		if (valor instanceof JTextComponent) {
 			componente = (Component) valor;
@@ -46,7 +57,7 @@ public class Validaciones {
 			}
 		}
 	}
-	
+
 	private static void atribuirValores() {
 		final Component component = componente;
 		final int cant = cantidad;
@@ -56,32 +67,29 @@ public class Validaciones {
 
 				if (component instanceof JTextComponent) {
 					if (((JTextComponent) component).getText().length() > cant) {
-						String au = null, aux = ((JTextComponent) component)
-								.getText();
+						String au = null, aux = ((JTextComponent) component).getText();
 						au = aux.substring(0, cant);
 						((JTextComponent) component).setText(au);
 						((JTextComponent) component).getToolkit().beep();
 					}
 					if (tip == 0) {
 						String texto = "";
-						for (int i = 0; i < ((JTextComponent) component).getText().length(); i++) {					
-							if (isNumeric(new Character(((JTextComponent) component).getText().charAt(i)))) 
+						for (int i = 0; i < ((JTextComponent) component).getText().length(); i++) {
+							if (isNumeric(new Character(((JTextComponent) component).getText().charAt(i))))
 								texto += ((JTextComponent) component).getText().charAt(i);
-							else ((JTextComponent) component).getToolkit().beep();	
+							else
+								((JTextComponent) component).getToolkit().beep();
 						}
 						((JTextComponent) component).setText(texto);
-						
+
 					}
 					if (tip == -1) {
 						String texto = "";
-						for (int i = 0; i < ((JTextComponent) component)
-								.getText().length(); i++) {
-							if (!isNumeric(new Character(
-									((JTextComponent) component).getText()
-											.charAt(i))))
-								texto += ((JTextComponent) component).getText()
-										.charAt(i);
-							else ((JTextComponent) component).getToolkit().beep();	
+						for (int i = 0; i < ((JTextComponent) component).getText().length(); i++) {
+							if (!isNumeric(new Character(((JTextComponent) component).getText().charAt(i))))
+								texto += ((JTextComponent) component).getText().charAt(i);
+							else
+								((JTextComponent) component).getToolkit().beep();
 						}
 						((JTextComponent) component).setText(texto);
 					}
@@ -89,6 +97,7 @@ public class Validaciones {
 			}
 		});
 	}
+
 	private static boolean isNumeric(Character caracter) {
 		char c = caracter.charValue();
 		if (!(Character.isDigit(c))) {
@@ -98,8 +107,7 @@ public class Validaciones {
 		}
 	}
 
-
-	public static boolean ValidarCamposVaciosEspacios(String messageVacios,String messageEspacios, Object... campos) {
+	public static boolean field(String messageVacios, String messageEspacios, Object... campos) {
 		for (final Object a : campos) {
 			if (a instanceof JTextComponent) {
 				if (((JTextComponent) a).getBorder() != bordeRojo) {
@@ -117,8 +125,7 @@ public class Validaciones {
 					((JTextComponent) a).setBorder(bordeRojo);
 					((JTextComponent) a).requestFocus();
 					return false;
-				} else if (String.valueOf(
-						((JTextComponent) a).getText().charAt(0)).equals(" ")) {
+				} else if (String.valueOf(((JTextComponent) a).getText().charAt(0)).equals(" ")) {
 					JOptionPane.showMessageDialog(null, messageEspacios);
 					((JTextComponent) a).setText("");
 					((JTextComponent) a).setBorder(bordeRojo);
@@ -130,9 +137,9 @@ public class Validaciones {
 		}
 		return true;
 	}
-	
-	
-	public static boolean ValidarCamposVaciosEspaciosJcombos(String messageVacios, String messageEspacios, String messageCombos,Object... campos) {
+
+	public static boolean ValidarCamposVaciosEspaciosJcombos(String messageVacios, String messageEspacios,
+			String messageCombos, Object... campos) {
 		for (final Object a : campos) {
 			if (a instanceof JTextComponent) {
 				if (((JTextComponent) a).getBorder() != bordeRojo) {
@@ -150,8 +157,7 @@ public class Validaciones {
 					((JTextComponent) a).setBorder(bordeRojo);
 					((JTextComponent) a).requestFocus();
 					return false;
-				} else if (String.valueOf(
-						((JTextComponent) a).getText().charAt(0)).equals(" ")) {
+				} else if (String.valueOf(((JTextComponent) a).getText().charAt(0)).equals(" ")) {
 					JOptionPane.showMessageDialog(null, messageEspacios);
 					((JTextComponent) a).setText("");
 					((JTextComponent) a).setBorder(bordeRojo);
@@ -159,8 +165,8 @@ public class Validaciones {
 
 					return false;
 				}
-			} 
-			
+			}
+
 			else if (a instanceof JComboBox) {
 				if (((JComboBox<?>) a).getBorder() != bordeRojo) {
 					borde_por_defecto = ((JComboBox<?>) a).getBorder();
@@ -179,44 +185,31 @@ public class Validaciones {
 					((JComboBox<?>) a).requestFocus();
 					return false;
 				}
-			}		
+			}
 		}
 		return true;
 	}
-	
-	/***uso futuro
+
+	/***
+	 * uso futuro
 	 *
 	 *
-	 // Convertir object en integer:
-	@SuppressWarnings("unused")
-	private static int ConvertirObjectToInt(Object Obj) {
-		int NumInt = Integer.parseInt(ConvertirObjectToString(Obj));
-		return NumInt;
-	}
+	 * // Convertir object en integer: @SuppressWarnings("unused") private
+	 * static int ConvertirObjectToInt(Object Obj) { int NumInt =
+	 * Integer.parseInt(ConvertirObjectToString(Obj)); return NumInt; }
+	 * 
+	 * // Convertir objeto en double: @SuppressWarnings("unused") private double
+	 * ConvertirObjectToDouble(Object Obj) { String Str = Obj.toString(); double
+	 * NumDouble = Double.valueOf(Str).doubleValue(); return NumDouble; }
+	 * 
+	 * // Convierte un object en boolean: @SuppressWarnings({ "unused",
+	 * "static-access" }) private boolean ConvertirObjectToBoolean(Object Obj) {
+	 * String CadBooleana = this.ConvertirObjectToString(Obj); Boolean booleano
+	 * = new Boolean(CadBooleana); return booleano; }
+	 * 
+	 * // Convierte un object en string: private static String
+	 * ConvertirObjectToString(Object Obj) { String Str = ""; if (Obj != null) {
+	 * Str = Obj.toString(); } return Str; }
+	 ****/
 
-	// Convertir objeto en double:
-	@SuppressWarnings("unused")
-	private double ConvertirObjectToDouble(Object Obj) {
-		String Str = Obj.toString();
-		double NumDouble = Double.valueOf(Str).doubleValue();
-		return NumDouble;
-	}
-
-	// Convierte un object en boolean:
-	@SuppressWarnings({ "unused", "static-access" })
-	private boolean ConvertirObjectToBoolean(Object Obj) {
-		String CadBooleana = this.ConvertirObjectToString(Obj);
-		Boolean booleano = new Boolean(CadBooleana);
-		return booleano;
-	}
-
-	// Convierte un object en string:
-	private static String ConvertirObjectToString(Object Obj) {
-		String Str = "";
-		if (Obj != null) {
-			Str = Obj.toString();
-		}
-		return Str;
-	}****/
-	 
 }
