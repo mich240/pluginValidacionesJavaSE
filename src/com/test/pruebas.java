@@ -3,13 +3,19 @@ package com.test;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -36,7 +42,11 @@ public class pruebas extends JFrame {
 	Border def;
 	private JButton jButton2;
 	private JButton jButton3;
-	private static final String PREFERRED_LOOK_AND_FEEL = "javax.swing.plaf.metal.MetalLookAndFeel";
+	private JPasswordField jPasswordField0;
+	private JTextArea jTextArea0;
+	private JScrollPane jScrollPane0;
+	private JTextField jTextField2;
+	private static final String PREFERRED_LOOK_AND_FEEL = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
 	public pruebas() {
 		initComponents();
 		validate.addComportamiento(getJTextField0(),10,util.LETTER,
@@ -46,14 +56,50 @@ public class pruebas extends JFrame {
 
 	private void initComponents() {
 		setLayout(new GroupLayout());
-		add(getJTextField0(), new Constraints(new Leading(202, 110, 10, 10), new Leading(70, 12, 12)));
-		add(getJTextField1(), new Constraints(new Leading(326, 105, 10, 10), new Leading(70, 12, 12)));
-		add(getJComboBox0(), new Constraints(new Leading(324, 108, 12, 12), new Leading(116, 10, 10)));
 		add(getJButton0(), new Constraints(new Leading(164, 12, 12), new Leading(115, 12, 12)));
 		add(getJButton1(), new Constraints(new Leading(36, 10, 10), new Leading(67, 12, 12)));
 		add(getJButton2(), new Constraints(new Leading(431, 10, 10), new Leading(32, 12, 12)));
 		add(getJButton3(), new Constraints(new Leading(248, 10, 10), new Leading(26, 12, 12)));
-		setSize(568, 323);
+		add(getJComboBox0(), new Constraints(new Leading(36, 108, 12, 12), new Leading(132, 51, 10, 10)));
+		add(getJPasswordField0(), new Constraints(new Leading(325, 136, 12, 12), new Leading(160, 12, 12)));
+		add(getJScrollPane0(), new Constraints(new Leading(158, 132, 10, 10), new Leading(151, 80, 12, 12)));
+		add(getJTextField1(), new Constraints(new Leading(326, 135, 10, 10), new Leading(70, 44, 12, 12)));
+		add(getJTextField0(), new Constraints(new Leading(202, 110, 10, 10), new Leading(70, 12, 12)));
+		add(getJTextField2(), new Constraints(new Leading(225, 132, 10, 10), new Leading(252, 29, 10, 10)));
+		setSize(568, 426);
+	}
+
+	private JTextField getJTextField2() {
+		if (jTextField2 == null) {
+			jTextField2 = new JTextField();
+			jTextField2.setAutoscrolls(true);
+			jTextField2.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 20, new ImageIcon(getClass().getResource("/icons/exito.png"))));
+		}
+		return jTextField2;
+	}
+
+	private JScrollPane getJScrollPane0() {
+		if (jScrollPane0 == null) {
+			jScrollPane0 = new JScrollPane();
+			jScrollPane0.setViewportView(getJTextArea0());
+		}
+		return jScrollPane0;
+	}
+
+	private JTextArea getJTextArea0() {
+		if (jTextArea0 == null) {
+			jTextArea0 = new JTextArea();
+			jTextArea0.setAutoscrolls(true);
+		}
+		return jTextArea0;
+	}
+
+	private JPasswordField getJPasswordField0() {
+		if (jPasswordField0 == null) {
+			jPasswordField0 = new JPasswordField();
+			jPasswordField0.setAutoscrolls(true);
+		}
+		return jPasswordField0;
 	}
 
 	private JButton getJButton3() {
@@ -98,13 +144,21 @@ public class pruebas extends JFrame {
 		return jButton1;
 	}
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	private JComboBox getJComboBox0() {
 		if (jComboBox0 == null) {
 			jComboBox0 = new JComboBox();
 			jComboBox0.setModel(new DefaultComboBoxModel(new Object[] { "item0", "item1", "item2", "item3" }));
-			jComboBox0.setDoubleBuffered(false);
-			jComboBox0.setBorder(null);
+			jComboBox0.addItemListener(new ItemListener() {
+	
+				public void itemStateChanged(ItemEvent event) {
+				}
+			});
+			jComboBox0.addActionListener(new ActionListener() {
+	
+				public void actionPerformed(ActionEvent event) {
+			//		jComboBox0ActionActionPerformed(event);
+				}
+			});
 		}
 		return jComboBox0;
 	}
@@ -119,6 +173,8 @@ public class pruebas extends JFrame {
 	private JTextField getJTextField0() {
 		if (jTextField0 == null) {
 			jTextField0 = new JTextField();
+			
+			
 		}
 		return jTextField0;
 	}
@@ -169,7 +225,7 @@ public class pruebas extends JFrame {
 	}
 
 	private void jButton0ActionActionPerformed(ActionEvent event) {
-	validate.restablecerCampos(jTextField0,jTextField1,getJComboBox0());
+	validate.restablecerCampos(jTextField0,jTextField1,getJComboBox0(),getJTextArea0(),getJPasswordField0());
 	}
 
 	private void jButton1ActionActionPerformed(ActionEvent event) {
@@ -178,18 +234,19 @@ public class pruebas extends JFrame {
 		JOptionPane.showMessageDialog(null, "Se envio correctamente");		
 	}*/
 		
-		if (validate.field(jComboBox0,jTextField0,getJTextField1())) {
+		if (validate.field(jTextField0,getJTextField1(),jComboBox0,jPasswordField0,getJTextArea0())) {
 			JOptionPane.showMessageDialog(null, "Se envio correctamente");
 		}
 	}
 
 	private void jButton2ActionActionPerformed(ActionEvent event) {
 		
-		Border bordeRojo = BorderFactory.createLineBorder(Color.RED,2);
-		  def=jComboBox0.getBorder();
+		Border bordeRojo = BorderFactory.createCompoundBorder(new LineBorder(Color.red, 1, false),
+				new LineBorder(new Color(255, 183, 183), 3, false));
+		  def=jTextField0.getBorder();
 		
 		
-			jComboBox0.setBorder(bordeRojo);
+			jTextField0.setBorder(bordeRojo);
 	
 		
 
@@ -199,7 +256,15 @@ public class pruebas extends JFrame {
 	}
 
 	private void jButton3ActionActionPerformed(ActionEvent event) {
-		jComboBox0.setBorder(def);
+		jTextField0.setBorder(def);
+	}
+
+	private void jComboBox0ItemItemStateChanged(ItemEvent event) {
+		
+	}
+
+	private void jComboBox0ActionActionPerformed(ActionEvent event) {
+		System.out.println(jComboBox0.getSelectedItem());
 	}
 
 }
