@@ -14,13 +14,13 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 import org.dyno.visual.swing.layouts.Constraints;
 import org.dyno.visual.swing.layouts.GroupLayout;
 import org.dyno.visual.swing.layouts.Leading;
 
 import com.utilidades.util.util;
-import com.validate.field.Comportamiento;
 import com.validate.field.validate;
 
 //VS4E -- DO NOT REMOVE THIS LINE!
@@ -39,8 +39,8 @@ public class pruebas extends JFrame {
 	private static final String PREFERRED_LOOK_AND_FEEL = "javax.swing.plaf.metal.MetalLookAndFeel";
 	public pruebas() {
 		initComponents();
-		validate.addComportamiento(getJTextField0(),3,util.NUMBER_AND_LETTER,
-											getJTextField1(),3,util.NUMBER);
+		validate.addComportamiento(getJTextField0(),10,util.LETTER,
+											getJTextField1(),0,util.NUMBER);
 		
 	}
 
@@ -173,10 +173,14 @@ public class pruebas extends JFrame {
 	}
 
 	private void jButton1ActionActionPerformed(ActionEvent event) {
-	if (validate.ValidarCamposVaciosEspaciosJcombos("No se aceptan msj vacios", "No se aceptan espacios en los inicios", "Selecione una opcion", 
+	/**if (validate.field("No se aceptan espacios vacios", "No se aceptan espacios en los inicios", "Selecione una opcion", 
 			getJTextField0(),getJTextField1(),getJComboBox0())) {
 		JOptionPane.showMessageDialog(null, "Se envio correctamente");		
-	}
+	}*/
+		
+		if (validate.field(jComboBox0,jTextField0,getJTextField1())) {
+			JOptionPane.showMessageDialog(null, "Se envio correctamente");
+		}
 	}
 
 	private void jButton2ActionActionPerformed(ActionEvent event) {
