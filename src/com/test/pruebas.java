@@ -3,6 +3,7 @@ package com.test;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
@@ -48,8 +49,8 @@ public class pruebas extends JFrame {
 		/**validate.addComportamiento(getJTextField0(),10,util.LETTER,
 											getJTextField1(),0,util.NUMBER);*/
 		
-		validate.isNumber(getJTextField0(),8);
-		validate.isLetter(getJTextField1(),5);
+		//validate.isNumber(getJTextField0(),8);
+		validate.isLetter(getJTextField1(),15);
 		validate.isAll(getJTextArea0(), 50);
 		validate.isEmail(getJTextField2(), 50);
 		
@@ -221,15 +222,15 @@ public class pruebas extends JFrame {
 	}
 
 	private void jButton0ActionActionPerformed(ActionEvent event) {
-	validate.restoreField(jTextField0,jTextField1,getJComboBox0(),getJTextArea0(),getJPasswordField0());
+	validate.restoreField(jTextField0,jTextField1,getJComboBox0(),getJTextArea0(),getJPasswordField0(),jTextField2);
 	}
 
 	private void jButton1ActionActionPerformed(ActionEvent event) {
 		
 		
-		if (validate.field(jTextField0,getJTextField1(),jComboBox0,jPasswordField0,getJTextArea0(),jTextField2)) {
-			JOptionPane.showMessageDialog(null, "Se envio correctamente");
-		}
+//		if (validate.field(jTextField0,getJTextField1(),jComboBox0,jPasswordField0,getJTextArea0(),jTextField2)) {
+//			JOptionPane.showMessageDialog(null, "Se envio correctamente");
+//		}
 	}
 
 	private void jButton2ActionActionPerformed(ActionEvent event) {

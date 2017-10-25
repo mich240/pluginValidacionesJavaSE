@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -87,6 +89,27 @@ public class validate {
 	public static void setMsjPrimerIndex(String msjPrimerIndex) {
 		validate.msjPrimerIndex = msjPrimerIndex;
 	}
+	
+	
+//	 public static  boolean isDate(String fechax) {
+//	        try {
+//	            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+//	            Date fecha = formatoFecha.parse(fechax);
+//	            
+//	            	
+//	            	
+//	            	
+//	            
+//	            
+//	        } catch (Exception e) {
+//	            JOptionPane.showMessageDialog(null, "No es el formato adecuado... dd-MM-yyyy");
+//	        	return false;
+//	            
+//	        }
+//	        return true;
+//	    }
+	
+	
 
 	public static void restoreField(Object... campos) {
 		for (final Object a : campos) {
@@ -98,12 +121,17 @@ public class validate {
 			}
 		}
 	}
+	
 
 	private static boolean isNumeric(Character caracter) {
-		// char c = caracter.charValue();
-		// si el caracter q paso por paramentros es un digito retorna true sino
-		// falso.
 		if (Character.isDigit(caracter))
+			return true;
+		else
+			return false;
+
+	}
+	private static boolean isLetter(Character caracter) {
+		if ((Character.isLetter(caracter)) || caracter==' ' || caracter==8 ) /* aceptamos el ingreso de espacios o el backspace*/
 			return true;
 		else
 			return false;
@@ -116,7 +144,7 @@ public class validate {
 	        pat = Pattern.compile("^([0-9a-zA-Z]([_.w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-w]*[0-9a-zA-Z].)+([a-zA-Z]{2,9}.)+[a-zA-Z]{2,3})$");	       
 	        mat = pat.matcher(correo);
 	        if (mat.find()) {
-	      //      System.out.println("[" + mat.group() + "]");
+	  //System.out.println("[" + mat.group() + "]");
 	            return true;
 	        }else{
 	            return false;
@@ -204,7 +232,7 @@ public class validate {
 
 				for (int i = 0; i < field.getText().length(); i++) {
 
-					if (isNumeric(new Character(field.getText().charAt(i)))) {
+					if (!isLetter(new Character(field.getText().charAt(i)))) {
 						addEventError(field);
 						field.getToolkit().beep();
 						if (esLetras) {
