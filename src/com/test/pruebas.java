@@ -3,12 +3,9 @@ package com.test;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -26,7 +23,6 @@ import org.dyno.visual.swing.layouts.Constraints;
 import org.dyno.visual.swing.layouts.GroupLayout;
 import org.dyno.visual.swing.layouts.Leading;
 
-import com.utilidades.util.util;
 import com.validate.field.validate;
 
 //VS4E -- DO NOT REMOVE THIS LINE!
@@ -49,8 +45,13 @@ public class pruebas extends JFrame {
 	private static final String PREFERRED_LOOK_AND_FEEL = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
 	public pruebas() {
 		initComponents();
-		validate.addComportamiento(getJTextField0(),10,util.LETTER,
-											getJTextField1(),0,util.NUMBER);
+		/**validate.addComportamiento(getJTextField0(),10,util.LETTER,
+											getJTextField1(),0,util.NUMBER);*/
+		
+		validate.isNumber(getJTextField0(),8);
+		validate.isLetter(getJTextField1(),5);
+		validate.isAll(getJTextArea0(), 50);
+		validate.isEmail(getJTextField2(), 50);
 		
 	}
 
@@ -61,11 +62,11 @@ public class pruebas extends JFrame {
 		add(getJButton2(), new Constraints(new Leading(431, 10, 10), new Leading(32, 12, 12)));
 		add(getJButton3(), new Constraints(new Leading(248, 10, 10), new Leading(26, 12, 12)));
 		add(getJComboBox0(), new Constraints(new Leading(36, 108, 12, 12), new Leading(132, 51, 10, 10)));
-		add(getJPasswordField0(), new Constraints(new Leading(325, 136, 12, 12), new Leading(160, 12, 12)));
 		add(getJScrollPane0(), new Constraints(new Leading(158, 132, 10, 10), new Leading(151, 80, 12, 12)));
-		add(getJTextField1(), new Constraints(new Leading(326, 135, 10, 10), new Leading(70, 44, 12, 12)));
 		add(getJTextField0(), new Constraints(new Leading(202, 110, 10, 10), new Leading(70, 12, 12)));
-		add(getJTextField2(), new Constraints(new Leading(225, 132, 10, 10), new Leading(252, 29, 10, 10)));
+		add(getJTextField1(), new Constraints(new Leading(326, 135, 10, 10), new Leading(70, 27, 12, 12)));
+		add(getJPasswordField0(), new Constraints(new Leading(325, 140, 10, 10), new Leading(160, 31, 10, 10)));
+		add(getJTextField2(), new Constraints(new Leading(360, 125, 10, 10), new Leading(113, 12, 12)));
 		setSize(568, 426);
 	}
 
@@ -73,7 +74,6 @@ public class pruebas extends JFrame {
 		if (jTextField2 == null) {
 			jTextField2 = new JTextField();
 			jTextField2.setAutoscrolls(true);
-			jTextField2.setBorder(BorderFactory.createMatteBorder(0, 0, 0, 20, new ImageIcon(getClass().getResource("/icons/exito.png"))));
 		}
 		return jTextField2;
 	}
@@ -144,19 +144,15 @@ public class pruebas extends JFrame {
 		return jButton1;
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private JComboBox getJComboBox0() {
 		if (jComboBox0 == null) {
 			jComboBox0 = new JComboBox();
 			jComboBox0.setModel(new DefaultComboBoxModel(new Object[] { "item0", "item1", "item2", "item3" }));
-			jComboBox0.addItemListener(new ItemListener() {
-	
-				public void itemStateChanged(ItemEvent event) {
-				}
-			});
 			jComboBox0.addActionListener(new ActionListener() {
 	
 				public void actionPerformed(ActionEvent event) {
-			//		jComboBox0ActionActionPerformed(event);
+					jComboBox0ActionActionPerformed(event);
 				}
 			});
 		}
@@ -225,16 +221,13 @@ public class pruebas extends JFrame {
 	}
 
 	private void jButton0ActionActionPerformed(ActionEvent event) {
-	validate.restablecerCampos(jTextField0,jTextField1,getJComboBox0(),getJTextArea0(),getJPasswordField0());
+	validate.restoreField(jTextField0,jTextField1,getJComboBox0(),getJTextArea0(),getJPasswordField0());
 	}
 
 	private void jButton1ActionActionPerformed(ActionEvent event) {
-	/**if (validate.field("No se aceptan espacios vacios", "No se aceptan espacios en los inicios", "Selecione una opcion", 
-			getJTextField0(),getJTextField1(),getJComboBox0())) {
-		JOptionPane.showMessageDialog(null, "Se envio correctamente");		
-	}*/
 		
-		if (validate.field(jTextField0,getJTextField1(),jComboBox0,jPasswordField0,getJTextArea0())) {
+		
+		if (validate.field(jTextField0,getJTextField1(),jComboBox0,jPasswordField0,getJTextArea0(),jTextField2)) {
 			JOptionPane.showMessageDialog(null, "Se envio correctamente");
 		}
 	}
@@ -259,12 +252,9 @@ public class pruebas extends JFrame {
 		jTextField0.setBorder(def);
 	}
 
-	private void jComboBox0ItemItemStateChanged(ItemEvent event) {
-		
+	private void jComboBox0ActionActionPerformed(ActionEvent event) {
+	
 	}
 
-	private void jComboBox0ActionActionPerformed(ActionEvent event) {
-		System.out.println(jComboBox0.getSelectedItem());
-	}
 
 }
