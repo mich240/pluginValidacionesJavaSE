@@ -3,12 +3,13 @@ package com.test;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
@@ -24,10 +25,12 @@ import org.dyno.visual.swing.layouts.Constraints;
 import org.dyno.visual.swing.layouts.GroupLayout;
 import org.dyno.visual.swing.layouts.Leading;
 
+import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JTextFieldDateEditor;
 import com.validate.field.validate;
 
 //VS4E -- DO NOT REMOVE THIS LINE!
-public class pruebas extends JFrame {
+public class test extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JButton jButton0;
@@ -43,13 +46,14 @@ public class pruebas extends JFrame {
 	private JTextArea jTextArea0;
 	private JScrollPane jScrollPane0;
 	private JTextField jTextField2;
+	private JDateChooser jDateChooser0;
+	private JFormattedTextField jFormattedTextField0;
 	private static final String PREFERRED_LOOK_AND_FEEL = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
-	public pruebas() {
+	public test() {
 		initComponents();
-		/**validate.addComportamiento(getJTextField0(),10,util.LETTER,
-											getJTextField1(),0,util.NUMBER);*/
+
 		
-		//validate.isNumber(getJTextField0(),8);
+		validate.isNumber(getJTextField0(),8);
 		validate.isLetter(getJTextField1(),15);
 		validate.isAll(getJTextArea0(), 50);
 		validate.isEmail(getJTextField2(), 50);
@@ -68,7 +72,36 @@ public class pruebas extends JFrame {
 		add(getJTextField1(), new Constraints(new Leading(326, 135, 10, 10), new Leading(70, 27, 12, 12)));
 		add(getJPasswordField0(), new Constraints(new Leading(325, 140, 10, 10), new Leading(160, 31, 10, 10)));
 		add(getJTextField2(), new Constraints(new Leading(360, 125, 10, 10), new Leading(113, 12, 12)));
+		add(getJDateChooser0(), new Constraints(new Leading(26, 149, 10, 10), new Leading(26, 12, 12)));
+		add(getJFormattedTextField0(), new Constraints(new Leading(230, 91, 10, 10), new Leading(111, 12, 12)));
 		setSize(568, 426);
+	}
+
+	private JFormattedTextField getJFormattedTextField0() {
+		if (jFormattedTextField0 == null) {
+			
+				
+				jFormattedTextField0 = new JFormattedTextField();
+			
+			
+		}
+		return jFormattedTextField0;
+	}
+
+	private JDateChooser getJDateChooser0() {
+		if (jDateChooser0 == null) {
+			jDateChooser0 = new JDateChooser();
+			jDateChooser0.setDateFormatString("dd-MM-yyyy");
+			jDateChooser0.setDate(new Date());
+			JTextFieldDateEditor editor = (JTextFieldDateEditor) jDateChooser0.getDateEditor();
+			editor.setEditable(false);
+			
+			
+			
+			jDateChooser0.setMaxSelectableDate(new Date(253370782875740L));
+			jDateChooser0.setMinSelectableDate(new Date(-62135751524260L));
+		}
+		return jDateChooser0;
 	}
 
 	private JTextField getJTextField2() {
@@ -163,6 +196,7 @@ public class pruebas extends JFrame {
 	private JTextField getJTextField1() {
 		if (jTextField1 == null) {
 			jTextField1 = new JTextField();
+		
 		}
 		return jTextField1;
 	}
@@ -210,8 +244,8 @@ public class pruebas extends JFrame {
 		installLnF();
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				pruebas frame = new pruebas();
-				frame.setDefaultCloseOperation(pruebas.EXIT_ON_CLOSE);
+				test frame = new test();
+				frame.setDefaultCloseOperation(test.EXIT_ON_CLOSE);
 				frame.setTitle("pruebas");
 				frame.getContentPane().setPreferredSize(frame.getSize());
 				frame.pack();
@@ -226,11 +260,11 @@ public class pruebas extends JFrame {
 	}
 
 	private void jButton1ActionActionPerformed(ActionEvent event) {
+	
 		
-		
-//		if (validate.field(jTextField0,getJTextField1(),jComboBox0,jPasswordField0,getJTextArea0(),jTextField2)) {
-//			JOptionPane.showMessageDialog(null, "Se envio correctamente");
-//		}
+		if (validate.field(jFormattedTextField0,jTextField0,getJTextField1(),jComboBox0,jPasswordField0,getJTextArea0(),jTextField2)) {
+			JOptionPane.showMessageDialog(null, "Se envio correctamente");
+		}
 	}
 
 	private void jButton2ActionActionPerformed(ActionEvent event) {
@@ -255,6 +289,7 @@ public class pruebas extends JFrame {
 
 	private void jComboBox0ActionActionPerformed(ActionEvent event) {
 	
+		
 	}
 
 
