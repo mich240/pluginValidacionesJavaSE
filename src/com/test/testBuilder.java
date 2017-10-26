@@ -1,20 +1,19 @@
 package com.test;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Date;
 
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JTextArea;
-import javax.swing.JEditorPane;
-import javax.swing.JScrollPane;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.text.DateFormat;
-import java.util.Date;
-import java.awt.event.ActionEvent;
-import javax.swing.JComboBox;
+
 import com.toedter.calendar.JDateChooser;
 
 public class testBuilder extends JFrame {
@@ -28,7 +27,7 @@ public class testBuilder extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextArea textArea;
-	private JComboBox comboBox;
+	private JComboBox<String> comboBox;
 	private JDateChooser dateChooser;
 
 	/**
@@ -89,7 +88,7 @@ public class testBuilder extends JFrame {
 		btnNewButton.setBounds(38, 142, 89, 23);
 		contentPane.add(btnNewButton);
 		
-		comboBox = new JComboBox();
+		comboBox = new JComboBox<String>();
 		comboBox.setBounds(68, 72, 118, 20);
 		comboBox.addItem("g");
 		comboBox.addItem("g");
