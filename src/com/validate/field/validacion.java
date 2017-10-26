@@ -59,7 +59,7 @@ import javax.swing.text.JTextComponent;
  * @author Metallis
  * @author Michel Mastrolonardo
  */
-public class validate {
+public class validacion {
 	/** variable que guarda el mensaje defecto para campos vacios. */
 	private static String msjVacios = "No se aceptan campos vacios.";
 	/**
@@ -110,7 +110,7 @@ public class validate {
 
 	/** Metodo para cambiar el mensaje por defecto cuando un email da error. */
 	public static void setMsjEmail(String msjEmail) {
-		validate.msjEmail = msjEmail;
+		validacion.msjEmail = msjEmail;
 	}
 
 	/**
@@ -134,7 +134,7 @@ public class validate {
 	 * error.
 	 */
 	public static void setMsjMultipleErrors(String msjMultipleErrors) {
-		validate.msjMultipleErrors = msjMultipleErrors;
+		validacion.msjMultipleErrors = msjMultipleErrors;
 	}
 
 	/**
@@ -150,7 +150,7 @@ public class validate {
 	 * numeros da error.
 	 */
 	public static void setMsjSoloNumero(String msjSoloNumero) {
-		validate.msjSoloNumero = msjSoloNumero;
+		validacion.msjSoloNumero = msjSoloNumero;
 	}
 
 	/**
@@ -166,7 +166,7 @@ public class validate {
 	 * letras da error.
 	 */
 	public static void setMsjSoloLetra(String msjSoloLetra) {
-		validate.msjSoloLetra = msjSoloLetra;
+		validacion.msjSoloLetra = msjSoloLetra;
 	}
 
 	/**
@@ -190,7 +190,7 @@ public class validate {
 	 * error.
 	 */
 	public static void setMsjVacios(String msjVacios) {
-		validate.msjVacios = msjVacios;
+		validacion.msjVacios = msjVacios;
 	}
 
 	/**
@@ -198,7 +198,7 @@ public class validate {
 	 * en blanco al inicio da error
 	 */
 	public static void setMsjBlanco(String msjBlanco) {
-		validate.msjBlanco = msjBlanco;
+		validacion.msjBlanco = msjBlanco;
 	}
 
 	/**
@@ -206,7 +206,7 @@ public class validate {
 	 * <code>JComboBox</code> da error por tener seleccionado el primer index.
 	 */
 	public static void setMsjPrimerIndex(String msjPrimerIndex) {
-		validate.msjPrimerIndex = msjPrimerIndex;
+		validacion.msjPrimerIndex = msjPrimerIndex;
 	}
 
 	/** Valida si un <code>Character</code> es numerico o no. */

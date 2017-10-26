@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import com.toedter.calendar.JDateChooser;
+import com.validate.field.validacion;
 
 public class testBuilder extends JFrame {
 
@@ -103,7 +104,7 @@ public class testBuilder extends JFrame {
 		contentPane.add(dateChooser);
 	}
 	private void metodo() {
-		System.out.println(com.validate.field.validate.field(textArea,textField,textField_2,textField_1,comboBox));
+		System.out.println(validacion.field(textArea,textField,textField_2,textField_1,comboBox));
 	System.out.println(comboBox.getSelectedIndex());
 	}
 }
