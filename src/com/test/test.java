@@ -27,7 +27,7 @@ import org.dyno.visual.swing.layouts.Leading;
 
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JTextFieldDateEditor;
-import com.validate.field.validacion;
+import com.validation.field.validation;
 
 //VS4E -- DO NOT REMOVE THIS LINE!
 public class test extends JFrame {
@@ -53,10 +53,10 @@ public class test extends JFrame {
 		initComponents();
 
 		
-		validacion.isNumber(getJTextField0(),8);
-		validacion.isLetter(getJTextField1(),15);
-		validacion.isAll(getJTextArea0(), 50);
-		validacion.isEmail(getJTextField2(), 50);
+		validation.isNumber(getJTextField0(),8);
+		validation.isLetter(getJTextField1(),15);
+		validation.isAll(getJTextArea0(), 50);
+		validation.isEmail(getJTextField2(), 50);
 		
 	}
 
@@ -256,13 +256,13 @@ public class test extends JFrame {
 	}
 
 	private void jButton0ActionActionPerformed(ActionEvent event) {
-	validacion.restoreField(jTextField0,jTextField1,getJComboBox0(),getJTextArea0(),getJPasswordField0(),jTextField2);
+	validation.restoreField(jTextField0,jTextField1,getJComboBox0(),getJTextArea0(),getJPasswordField0(),jTextField2);
 	}
 
 	private void jButton1ActionActionPerformed(ActionEvent event) {
 	
 		
-		if (validacion.field(jFormattedTextField0,jTextField0,getJTextField1(),jComboBox0,jPasswordField0,getJTextArea0(),jTextField2)) {
+		if (validation.field(jFormattedTextField0,jTextField0,getJTextField1(),jComboBox0,jPasswordField0,getJTextArea0(),jTextField2)) {
 			JOptionPane.showMessageDialog(null, "Se envio correctamente");
 		}
 	}

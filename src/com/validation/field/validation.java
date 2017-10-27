@@ -1,4 +1,4 @@
-package com.validate.field;
+package com.validation.field;
 
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -59,7 +59,7 @@ import javax.swing.text.JTextComponent;
  * @author Metallis
  * @author Michel Mastrolonardo
  */
-public class validacion {
+public class validation {
 	/** variable que guarda el mensaje defecto para campos vacios. */
 	private static String msjVacios = "No se aceptan campos vacios.";
 	/**
@@ -110,7 +110,7 @@ public class validacion {
 
 	/** Metodo para cambiar el mensaje por defecto cuando un email da error. */
 	public static void setMsjEmail(String msjEmail) {
-		validacion.msjEmail = msjEmail;
+		validation.msjEmail = msjEmail;
 	}
 
 	/**
@@ -134,7 +134,7 @@ public class validacion {
 	 * error.
 	 */
 	public static void setMsjMultipleErrors(String msjMultipleErrors) {
-		validacion.msjMultipleErrors = msjMultipleErrors;
+		validation.msjMultipleErrors = msjMultipleErrors;
 	}
 
 	/**
@@ -150,7 +150,7 @@ public class validacion {
 	 * numeros da error.
 	 */
 	public static void setMsjSoloNumero(String msjSoloNumero) {
-		validacion.msjSoloNumero = msjSoloNumero;
+		validation.msjSoloNumero = msjSoloNumero;
 	}
 
 	/**
@@ -166,7 +166,7 @@ public class validacion {
 	 * letras da error.
 	 */
 	public static void setMsjSoloLetra(String msjSoloLetra) {
-		validacion.msjSoloLetra = msjSoloLetra;
+		validation.msjSoloLetra = msjSoloLetra;
 	}
 
 	/**
@@ -190,7 +190,7 @@ public class validacion {
 	 * error.
 	 */
 	public static void setMsjVacios(String msjVacios) {
-		validacion.msjVacios = msjVacios;
+		validation.msjVacios = msjVacios;
 	}
 
 	/**
@@ -198,7 +198,7 @@ public class validacion {
 	 * en blanco al inicio da error
 	 */
 	public static void setMsjBlanco(String msjBlanco) {
-		validacion.msjBlanco = msjBlanco;
+		validation.msjBlanco = msjBlanco;
 	}
 
 	/**
@@ -206,7 +206,7 @@ public class validacion {
 	 * <code>JComboBox</code> da error por tener seleccionado el primer index.
 	 */
 	public static void setMsjPrimerIndex(String msjPrimerIndex) {
-		validacion.msjPrimerIndex = msjPrimerIndex;
+		validation.msjPrimerIndex = msjPrimerIndex;
 	}
 
 	/** Valida si un <code>Character</code> es numerico o no. */
