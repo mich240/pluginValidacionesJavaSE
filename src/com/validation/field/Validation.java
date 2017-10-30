@@ -59,7 +59,7 @@ import javax.swing.text.JTextComponent;
  * @author Metallis
  * @author Michel Mastrolonardo
  */
-public class validation {
+public class Validation {
 	/** variable que guarda el mensaje defecto para campos vacios. */
 	private static String msjVacios = "No se aceptan campos vacios.";
 	/**
@@ -104,7 +104,7 @@ public class validation {
 
 	/** Metodo para cambiar el mensaje por defecto cuando un email da error. */
 	public static void setMsjEmail(String msjEmail) {
-		validation.msjEmail = msjEmail;
+		Validation.msjEmail = msjEmail;
 	}
 
 	/**
@@ -126,7 +126,7 @@ public class validation {
 	 * Metodo para cambiar el mensaje por defecto cuando multiples campos dan error.
 	 */
 	public static void setMsjMultipleErrors(String msjMultipleErrors) {
-		validation.msjMultipleErrors = msjMultipleErrors;
+		Validation.msjMultipleErrors = msjMultipleErrors;
 	}
 
 	/**
@@ -142,7 +142,7 @@ public class validation {
 	 * error.
 	 */
 	public static void setMsjSoloNumero(String msjSoloNumero) {
-		validation.msjSoloNumero = msjSoloNumero;
+		Validation.msjSoloNumero = msjSoloNumero;
 	}
 
 	/**
@@ -158,7 +158,7 @@ public class validation {
 	 * error.
 	 */
 	public static void setMsjSoloLetra(String msjSoloLetra) {
-		validation.msjSoloLetra = msjSoloLetra;
+		Validation.msjSoloLetra = msjSoloLetra;
 	}
 
 	/**
@@ -181,7 +181,7 @@ public class validation {
 	 * Metodo para cambiar el mensaje por defecto cuando un campos vacios da error.
 	 */
 	public static void setMsjVacios(String msjVacios) {
-		validation.msjVacios = msjVacios;
+		Validation.msjVacios = msjVacios;
 	}
 
 	/**
@@ -189,7 +189,7 @@ public class validation {
 	 * blanco al inicio da error
 	 */
 	public static void setMsjBlanco(String msjBlanco) {
-		validation.msjBlanco = msjBlanco;
+		Validation.msjBlanco = msjBlanco;
 	}
 
 	/**
@@ -197,7 +197,7 @@ public class validation {
 	 * da error por tener seleccionado el primer index.
 	 */
 	public static void setMsjPrimerIndex(String msjPrimerIndex) {
-		validation.msjPrimerIndex = msjPrimerIndex;
+		Validation.msjPrimerIndex = msjPrimerIndex;
 	}
 
 	/** Valida si un <code>Character</code> es numerico o no. */

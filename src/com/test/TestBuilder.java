@@ -15,9 +15,9 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import com.toedter.calendar.JDateChooser;
-import com.validation.field.validation;
+import com.validation.field.Validation;
 
-public class testBuilder extends JFrame {
+public class TestBuilder extends JFrame {
 
 	/**
 	 * 
@@ -38,7 +38,7 @@ public class testBuilder extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					testBuilder frame = new testBuilder();
+					TestBuilder frame = new TestBuilder();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,7 +50,7 @@ public class testBuilder extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public testBuilder() {
+	public TestBuilder() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -104,7 +104,7 @@ public class testBuilder extends JFrame {
 		contentPane.add(dateChooser);
 	}
 	private void metodo() {
-		System.out.println(validation.field(textArea,textField,textField_2,textField_1,comboBox));
+		System.out.println(Validation.field(textArea,textField,textField_2,textField_1,comboBox));
 	System.out.println(comboBox.getSelectedIndex());
 	}
 }

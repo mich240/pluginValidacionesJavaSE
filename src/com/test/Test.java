@@ -27,10 +27,10 @@ import org.dyno.visual.swing.layouts.Leading;
 
 import com.toedter.calendar.JDateChooser;
 import com.toedter.calendar.JTextFieldDateEditor;
-import com.validation.field.validation;
+import com.validation.field.Validation;
 
 //VS4E -- DO NOT REMOVE THIS LINE!
-public class test extends JFrame {
+public class Test extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JButton jButton0;
@@ -49,14 +49,14 @@ public class test extends JFrame {
 	private JDateChooser jDateChooser0;
 	private JFormattedTextField jFormattedTextField0;
 	private static final String PREFERRED_LOOK_AND_FEEL = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
-	public test() {
+	public Test() {
 		initComponents();
 
 		
-		validation.isNumber(getJTextField0(),8);
-		validation.isEmail(getJTextField1(),15);
-		validation.isNumber(getJTextArea0(), 50);
-		validation.isEmail(getJTextField2(), 50);
+		Validation.isNumber(getJTextField0(),8);
+		Validation.isEmail(getJTextField1(),15);
+		Validation.isNumber(getJTextArea0(), 50);
+		Validation.isEmail(getJTextField2(), 50);
 		
 	}
 
@@ -244,8 +244,8 @@ public class test extends JFrame {
 		installLnF();
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				test frame = new test();
-				frame.setDefaultCloseOperation(test.EXIT_ON_CLOSE);
+				Test frame = new Test();
+				frame.setDefaultCloseOperation(Test.EXIT_ON_CLOSE);
 				frame.setTitle("pruebas");
 				frame.getContentPane().setPreferredSize(frame.getSize());
 				frame.pack();
@@ -256,13 +256,13 @@ public class test extends JFrame {
 	}
 
 	private void jButton0ActionActionPerformed(ActionEvent event) {
-	validation.restoreField(jTextField0,jTextField1,getJComboBox0(),getJTextArea0(),getJPasswordField0(),jTextField2);
+	Validation.restoreField(jTextField0,jTextField1,getJComboBox0(),getJTextArea0(),getJPasswordField0(),jTextField2);
 	}
 
 	private void jButton1ActionActionPerformed(ActionEvent event) {
 	
 		
-		if (validation.field(jFormattedTextField0,jTextField0,getJTextField1(),jComboBox0,jPasswordField0,getJTextArea0(),jTextField2)) {
+		if (Validation.field(jFormattedTextField0,jTextField0,getJTextField1(),jComboBox0,jPasswordField0,getJTextArea0(),jTextField2)) {
 			JOptionPane.showMessageDialog(null, "Se envio correctamente");
 		}
 	}
