@@ -54,8 +54,8 @@ public class test extends JFrame {
 
 		
 		validation.isNumber(getJTextField0(),8);
-		validation.isLetter(getJTextField1(),15);
-		validation.isAll(getJTextArea0(), 50);
+		validation.isEmail(getJTextField1(),15);
+		validation.isNumber(getJTextArea0(), 50);
 		validation.isEmail(getJTextField2(), 50);
 		
 	}

@@ -63,23 +63,21 @@ public class validation {
 	/** variable que guarda el mensaje defecto para campos vacios. */
 	private static String msjVacios = "No se aceptan campos vacios.";
 	/**
-	 * variable que guarda el mensaje defecto para campos con un caracter en
-	 * blanco al inicio.
+	 * variable que guarda el mensaje defecto para campos con un caracter en blanco
+	 * al inicio.
 	 */
 	private static String msjBlanco = "No se aceptan espacios en blanco al inicio del campo.";
 	/**
-	 * variable que guarda el mensaje defecto para error de tener el primer
-	 * index seleccionado en un <code>JComboBox</code>.
+	 * variable que guarda el mensaje defecto para error de tener el primer index
+	 * seleccionado en un <code>JComboBox</code>.
 	 */
 	private static String msjPrimerIndex = "Seleccione una opción valida.";
 	/**
-	 * variable que guarda el mensaje defecto para campos que solo admiten
-	 * numeros.
+	 * variable que guarda el mensaje defecto para campos que solo admiten numeros.
 	 */
 	private static String msjSoloNumero = "Solo se permiten números en este campo.";
 	/**
-	 * variable que guarda el mensaje defecto para campos que solo admiten
-	 * letras.
+	 * variable que guarda el mensaje defecto para campos que solo admiten letras.
 	 */
 	private static String msjSoloLetra = "Solo se permiten letras en este campo.";
 	/**
@@ -87,18 +85,14 @@ public class validation {
 	 */
 	private static String msjEmail = "El email es incorrecto por favor verifique.";
 	/**
-	 * variable que guarda el mensaje defecto para cuando suceden multiples
-	 * errores.
+	 * variable que guarda el mensaje defecto para cuando suceden multiples errores.
 	 */
 	private static String msjMultipleErrors = "Existen multiples errores en su formulario por favor verifique e intente nuevamente.";
-	/** variable que designo para controlar si hay errores del tipo numero. */
-	private static boolean esNumero = true;
-	/** variable que designo para controlar si hay errores del tipo letra. */
-	private static boolean esLetras = true;
-	/** variable que designo para controlar si hay errores del tipo email. */
-	private static boolean esEmail = true;
 	/** contador de errores globales. */
-	private static int errorGlobal = 0;
+	private static int errorNumero = 0;
+	private static int errorLetras = 0;
+	private static int errorEmail = 0;
+
 	/** <code>Border</code> para identificar los errores en los componentes. */
 	private static Border borderErros = BorderFactory.createCompoundBorder(new LineBorder(Color.red, 2, false),
 			new LineBorder(new Color(255, 183, 183), 4, false));
@@ -114,8 +108,7 @@ public class validation {
 	}
 
 	/**
-	 * Metodo de acceso del mensaje que se muestra cuando campos vacios da
-	 * error.
+	 * Metodo de acceso del mensaje que se muestra cuando campos vacios da error.
 	 */
 	public static String getMsjVacios() {
 		return msjVacios;
@@ -130,80 +123,78 @@ public class validation {
 	}
 
 	/**
-	 * Metodo para cambiar el mensaje por defecto cuando multiples campos dan
-	 * error.
+	 * Metodo para cambiar el mensaje por defecto cuando multiples campos dan error.
 	 */
 	public static void setMsjMultipleErrors(String msjMultipleErrors) {
 		validation.msjMultipleErrors = msjMultipleErrors;
 	}
 
 	/**
-	 * Metodo de acceso del mensaje que se muestra cuando campos de solo numeros
-	 * da error.
+	 * Metodo de acceso del mensaje que se muestra cuando campos de solo numeros da
+	 * error.
 	 */
 	public static String getMsjSoloNumero() {
 		return msjSoloNumero;
 	}
 
 	/**
-	 * Metodo para cambiar el mensaje por defecto cuando un campo de solo
-	 * numeros da error.
+	 * Metodo para cambiar el mensaje por defecto cuando un campo de solo numeros da
+	 * error.
 	 */
 	public static void setMsjSoloNumero(String msjSoloNumero) {
 		validation.msjSoloNumero = msjSoloNumero;
 	}
 
 	/**
-	 * Metodo de acceso del mensaje que se muestra cuando campos de solo letras
-	 * da error.
+	 * Metodo de acceso del mensaje que se muestra cuando campos de solo letras da
+	 * error.
 	 */
 	public static String getMsjSoloLetra() {
 		return msjSoloLetra;
 	}
 
 	/**
-	 * Metodo para cambiar el mensaje por defecto cuando un campos de solo
-	 * letras da error.
+	 * Metodo para cambiar el mensaje por defecto cuando un campos de solo letras da
+	 * error.
 	 */
 	public static void setMsjSoloLetra(String msjSoloLetra) {
 		validation.msjSoloLetra = msjSoloLetra;
 	}
 
 	/**
-	 * Metodo de acceso del mensaje que se muestra cuando campos en blanco al
-	 * inicio da error.
+	 * Metodo de acceso del mensaje que se muestra cuando campos en blanco al inicio
+	 * da error.
 	 */
 	public static String getMsjBlanco() {
 		return msjBlanco;
 	}
 
 	/**
-	 * Metodo de acceso del mensaje que se muestra cuando el
-	 * <code>JComboBox</code> da error por tener seleccionado el primer index.
+	 * Metodo de acceso del mensaje que se muestra cuando el <code>JComboBox</code>
+	 * da error por tener seleccionado el primer index.
 	 */
 	public static String getMsjPrimerIndex() {
 		return msjPrimerIndex;
 	}
 
 	/**
-	 * Metodo para cambiar el mensaje por defecto cuando un campos vacios da
-	 * error.
+	 * Metodo para cambiar el mensaje por defecto cuando un campos vacios da error.
 	 */
 	public static void setMsjVacios(String msjVacios) {
 		validation.msjVacios = msjVacios;
 	}
 
 	/**
-	 * Metodo para cambiar el mensaje por defecto cuando un campos con espacio
-	 * en blanco al inicio da error
+	 * Metodo para cambiar el mensaje por defecto cuando un campos con espacio en
+	 * blanco al inicio da error
 	 */
 	public static void setMsjBlanco(String msjBlanco) {
 		validation.msjBlanco = msjBlanco;
 	}
 
 	/**
-	 * Metodo para cambiar el mensaje por defecto cuando un
-	 * <code>JComboBox</code> da error por tener seleccionado el primer index.
+	 * Metodo para cambiar el mensaje por defecto cuando un <code>JComboBox</code>
+	 * da error por tener seleccionado el primer index.
 	 */
 	public static void setMsjPrimerIndex(String msjPrimerIndex) {
 		validation.msjPrimerIndex = msjPrimerIndex;
@@ -219,8 +210,8 @@ public class validation {
 	}
 
 	/**
-	 * Valida si un <code>Character</code> es letra y a demas aceptamos espacios
-	 * y el "backspace <code>Character</code> 8".
+	 * Valida si un <code>Character</code> es letra y a demas aceptamos espacios y
+	 * el "backspace <code>Character</code> 8".
 	 */
 	private static boolean isLetter(Character caracter) {
 		if ((Character.isLetter(caracter)) || caracter == ' ' || caracter == 8)
@@ -245,18 +236,18 @@ public class validation {
 	}
 
 	/**
-	 * si el tamaño de los caracteres del campo es mayor a la cantidad limite
-	 * que estableci, guardo en 1 variable toda la cadena desde 0 hasta la
-	 * cantidad que estableci digamos q fue 8.
+	 * si el tamaño de los caracteres del campo es mayor a la cantidad limite que
+	 * estableci, guardo en 1 variable toda la cadena desde 0 hasta la cantidad que
+	 * estableci digamos q fue 8.
 	 * <p>
 	 * eso tomaria la cadena de ese campo de 0 a 8 y se lo seteo al campo, eso
 	 * sucede al despresionar la tecla del caracter q se este digitando en ese
-	 * momento lo que hace q sea dinamico e inmediatamente que se tipee se
-	 * seteara de forma correcta el valor de 0 a 8.
+	 * momento lo que hace q sea dinamico e inmediatamente que se tipee se seteara
+	 * de forma correcta el valor de 0 a 8.
 	 * <p>
-	 * Tambien te salva de la posibilidad de q la persona se quede presionando
-	 * la tecla hasta llenar el campo, al soltarlo se enviara la cadena correcta
-	 * 0 a 8 por ejemplo.
+	 * Tambien te salva de la posibilidad de q la persona se quede presionando la
+	 * tecla hasta llenar el campo, al soltarlo se enviara la cadena correcta 0 a 8
+	 * por ejemplo.
 	 **/
 	private static void aplicarLimite(JTextComponent field, int characterLimit) {
 		String nuevoTexto = null;
@@ -269,21 +260,18 @@ public class validation {
 	}
 
 	/**
-	 * Este metodo agrega un comportamiento a el campo de texto que seguro
-	 * desciende de <code>JTextComponent</code>. aqui se le agrega un
-	 * <code>Border</code> personalizado de color rojo para identificar los
-	 * errores.
+	 * Este metodo agrega un comportamiento a el campo de texto que seguro desciende
+	 * de <code>JTextComponent</code>. aqui se le agrega un <code>Border</code>
+	 * personalizado de color rojo para identificar los errores.
 	 * <p>
-	 * la primera vez verifico que no tenga este borde asi se si ya le he dado
-	 * este comportamiendo. si no tiene el borde rojo y ese componente es
-	 * enviado aca, es un componente no valido por lo tanto coloco el borde en
-	 * rojo y le agrego una accion para que se restablesca el borde que tenia
-	 * antes.
+	 * la primera vez verifico que no tenga este borde asi se si ya le he dado este
+	 * comportamiendo. si no tiene el borde rojo y ese componente es enviado aca, es
+	 * un componente no valido por lo tanto coloco el borde en rojo y le agrego una
+	 * accion para que se restablesca el borde que tenia antes.
 	 * <p>
-	 * esta accion funciona al presionar una tecla en el campo y lo ultimo que
-	 * hace es remover ese evento para que no se sature el componente por si
-	 * vuelve a dar error, asi si esto sucede de nuevo siempre sera un evento
-	 * unico el que pose.
+	 * esta accion funciona al presionar una tecla en el campo y lo ultimo que hace
+	 * es remover ese evento para que no se sature el componente por si vuelve a dar
+	 * error, asi si esto sucede de nuevo siempre sera un evento unico el que pose.
 	 * 
 	 * @param field
 	 *            es el campo que se le quiere dar la accion.
@@ -305,20 +293,19 @@ public class validation {
 	}
 
 	/**
-	 * Este metodo agrega un comportamiento a el <code>JComboBox</code>. aqui se
-	 * le agrega un <code>Border</code> personalizado de color rojo para
-	 * identificar los errores.
+	 * Este metodo agrega un comportamiento a el <code>JComboBox</code>. aqui se le
+	 * agrega un <code>Border</code> personalizado de color rojo para identificar
+	 * los errores.
 	 * <p>
-	 * la primera vez verifico que no tenga este borde asi se si ya le he dado
-	 * este comportamiendo. si no tiene el borde rojo y ese componente es
-	 * enviado aca, es un componente no valido por lo tanto coloco el borde en
-	 * rojo y le agrego una accion para que se restablesca el borde que tenia
-	 * antes.
+	 * la primera vez verifico que no tenga este borde asi se si ya le he dado este
+	 * comportamiendo. si no tiene el borde rojo y ese componente es enviado aca, es
+	 * un componente no valido por lo tanto coloco el borde en rojo y le agrego una
+	 * accion para que se restablesca el borde que tenia antes.
 	 * <p>
-	 * esta accion funciona al seleccionar un item en el <code>JComboBox</code>
-	 * y lo ultimo que hace es remover ese evento para que no se sature el
-	 * componente por si vuelve a dar error, asi si esto sucede de nuevo siempre
-	 * sera un evento unico el que pose.
+	 * esta accion funciona al seleccionar un item en el <code>JComboBox</code> y lo
+	 * ultimo que hace es remover ese evento para que no se sature el componente por
+	 * si vuelve a dar error, asi si esto sucede de nuevo siempre sera un evento
+	 * unico el que pose.
 	 * 
 	 * @param field
 	 *            es el campo que se le quiere dar la accion.
@@ -344,15 +331,15 @@ public class validation {
 
 	/**
 	 * Agrega un comportamiento a un campo para que valide emails, y aplica un
-	 * limite de <code>Character</code> a este campo, este metodo debe llamarse
-	 * en el constructor de la clase que lo va a usar.
+	 * limite de <code>Character</code> a este campo, este metodo debe llamarse en
+	 * el constructor de la clase que lo va a usar.
 	 * 
 	 * <p>
 	 * agregando un <code>keyReleased</code> aplico el metodo
-	 * <code>aplicarLimite</code> y despues uso un <code>if</code> para llamar
-	 * un metodo privado que me hace la verificacion de la validacion y devuelve
-	 * <code>true</code> o <code>false</code>; si es <code>true</code> el campo
-	 * no es valido.
+	 * <code>aplicarLimite</code> y despues uso un <code>if</code> para llamar un
+	 * metodo privado que me hace la verificacion de la validacion y devuelve
+	 * <code>true</code> o <code>false</code>; si es <code>true</code> el campo no
+	 * es valido.
 	 * <p>
 	 * tengo una variable <code>boolean</code> que designo para estos casos y la
 	 * cambio a <code>false</code> y sumo un contador de errores globales si el
@@ -363,13 +350,12 @@ public class validation {
 	 * <code>boolean</code> a <code>true</code> y resto un valor a la variable
 	 * global.
 	 * <p>
-	 * la suma y la resta de la variable global ocurre una sola ves ya que
-	 * siempre verifico que la variable <code>boolean</code> sea opuesta al
-	 * valor que le voy a dar y asi evita sumar un valor si este campo vuelve a
-	 * dar el mismo error.
+	 * la suma y la resta de la variable global ocurre una sola ves ya que siempre
+	 * verifico que la variable <code>boolean</code> sea opuesta al valor que le voy
+	 * a dar y asi evita sumar un valor si este campo vuelve a dar el mismo error.
 	 * 
 	 * <p>
-	 * el <code>errorGlobal</code> se suma con la variable local en el metodo
+	 * el <code>errorEmail</code> se suma con la variable local en el metodo
 	 * <code>field</code> para verificar todos los errores.
 	 * 
 	 * @see #addEventError
@@ -379,12 +365,13 @@ public class validation {
 	 * @param field
 	 *            el campo al que le quiero dar la accion.
 	 * @param characterLimit
-	 *            el limite de <code>Character</code> que quiero que el campo
-	 *            tenga.
+	 *            el limite de <code>Character</code> que quiero que el campo tenga.
 	 */
 	public static void isEmail(final JTextComponent field, final int characterLimit) {
 
 		field.addKeyListener(new KeyAdapter() {
+			private boolean esEmail = true;
+
 			@Override
 			public void keyReleased(KeyEvent e) {
 				aplicarLimite(field, characterLimit);
@@ -392,12 +379,18 @@ public class validation {
 					addEventError(field);
 					if (esEmail) {
 						esEmail = false;
-						errorGlobal++;
+						errorEmail++;
 					}
 				} else {
 					if (!esEmail) {
 						esEmail = true;
-						errorGlobal--;
+						errorEmail--;
+					}
+				}
+				if (field.getText().isEmpty()) {
+					if (!esEmail) {
+						esEmail = true;
+						errorEmail--;
 					}
 				}
 			}
@@ -407,32 +400,31 @@ public class validation {
 
 	/**
 	 * Agrega un comportamiento a un campo para que valide numeros, y aplica un
-	 * limite de <code>Character</code> a este campo, este metodo debe llamarse
-	 * en el constructor de la clase que lo va a usar.
+	 * limite de <code>Character</code> a este campo, este metodo debe llamarse en
+	 * el constructor de la clase que lo va a usar.
 	 * 
 	 * <p>
 	 * agregando un <code>keyReleased</code> aplico el metodo
-	 * <code>aplicarLimite</code> y despues uso un <code>if</code> para llamar
-	 * un metodo privado que me hace la verificacion de la validacion y devuelve
-	 * <code>true</code> o <code>false</code>; si es <code>true</code> el campo
-	 * no es valido.
+	 * <code>aplicarLimite</code> y despues uso un <code>if</code> para llamar un
+	 * metodo privado que me hace la verificacion de la validacion y devuelve
+	 * <code>true</code> o <code>false</code>; si es <code>true</code> el campo no
+	 * es valido.
 	 * <p>
 	 * tengo una variable <code>boolean</code> que designo para estos casos y la
 	 * cambio a <code>false</code> y sumo un contador de errores globales si el
-	 * <code>if</code> me devuelve <code>true</code> ademas agrego el
+	 * <code>if</code> me devuelve <code>true</code>. ademas agrego el
 	 * <code>addEventError</code> para que le de un comportamiento de error.
 	 * <p>
 	 * si el <code>if</code> me devuelve <code>false</code> cambio el
 	 * <code>boolean</code> a <code>true</code> y resto un valor a la variable
 	 * global.
 	 * <p>
-	 * la suma y la resta de la variable global ocurre una sola ves ya que
-	 * siempre verifico que la variable <code>boolean</code> sea opuesta al
-	 * valor que le voy a dar y asi evita sumar un valor si este campo vuelve a
-	 * dar el mismo error.
+	 * la suma y la resta de la variable global ocurre una sola ves ya que siempre
+	 * verifico que la variable <code>boolean</code> sea opuesta al valor que le voy
+	 * a dar y asi evita sumar un valor si este campo vuelve a dar el mismo error.
 	 * 
 	 * <p>
-	 * el <code>errorGlobal</code> se suma con la variable local en el metodo
+	 * el <code>errorNumero</code> se suma con la variable local en el metodo
 	 * <code>field</code> para verificar todos los errores.
 	 * 
 	 * @see #addEventError
@@ -442,11 +434,12 @@ public class validation {
 	 * @param field
 	 *            el campo al que le quiero dar la accion.
 	 * @param characterLimit
-	 *            el limite de <code>Character</code> que quiero que el campo
-	 *            tenga.
+	 *            el limite de <code>Character</code> que quiero que el campo tenga.
 	 */
 	public static void isNumber(final JTextComponent field, final int characterLimit) {
 		field.addKeyListener(new KeyAdapter() {
+			private boolean esNumero = true;
+
 			@Override
 			public void keyReleased(KeyEvent e) {
 				aplicarLimite(field, characterLimit);
@@ -457,18 +450,24 @@ public class validation {
 						field.getToolkit().beep();
 						if (esNumero) {
 							esNumero = false;
-							errorGlobal++;
+							errorNumero++;
 						}
 
 						break;
 					} else {
 						if (!esNumero) {
 							esNumero = true;
-							errorGlobal--;
+							errorNumero--;
 						}
 
 					}
 
+				}
+				if (field.getText().isEmpty()) {
+					if (!esNumero) {
+						esNumero = true;
+						errorNumero--;
+					}
 				}
 
 			}
@@ -477,15 +476,15 @@ public class validation {
 
 	/**
 	 * Agrega un comportamiento a un campo para que valide letras, y aplica un
-	 * limite de <code>Character</code> a este campo, este metodo debe llamarse
-	 * en el constructor de la clase que lo va a usar.
+	 * limite de <code>Character</code> a este campo, este metodo debe llamarse en
+	 * el constructor de la clase que lo va a usar.
 	 * 
 	 * <p>
 	 * agregando un <code>keyReleased</code> aplico el metodo
-	 * <code>aplicarLimite</code> y despues uso un <code>if</code> para llamar
-	 * un metodo privado que me hace la verificacion de la validacion y devuelve
-	 * <code>true</code> o <code>false</code>; si es <code>true</code> el campo
-	 * no es valido.
+	 * <code>aplicarLimite</code> y despues uso un <code>if</code> para llamar un
+	 * metodo privado que me hace la verificacion de la validacion y devuelve
+	 * <code>true</code> o <code>false</code>; si es <code>true</code> el campo no
+	 * es valido.
 	 * <p>
 	 * tengo una variable <code>boolean</code> que designo para estos casos y la
 	 * cambio a <code>false</code> y sumo un contador de errores globales si el
@@ -496,13 +495,12 @@ public class validation {
 	 * <code>boolean</code> a <code>true</code> y resto un valor a la variable
 	 * global.
 	 * <p>
-	 * la suma y la resta de la variable global ocurre una sola ves ya que
-	 * siempre verifico que la variable <code>boolean</code> sea opuesta al
-	 * valor que le voy a dar y asi evita sumar un valor si este campo vuelve a
-	 * dar el mismo error.
+	 * la suma y la resta de la variable global ocurre una sola ves ya que siempre
+	 * verifico que la variable <code>boolean</code> sea opuesta al valor que le voy
+	 * a dar y asi evita sumar un valor si este campo vuelve a dar el mismo error.
 	 * 
 	 * <p>
-	 * el <code>errorGlobal</code> se suma con la variable local en el metodo
+	 * el <code>errorLetras</code> se suma con la variable local en el metodo
 	 * <code>field</code> para verificar todos los errores.
 	 * 
 	 * @see #addEventError
@@ -512,42 +510,49 @@ public class validation {
 	 * @param field
 	 *            el campo al que le quiero dar la accion.
 	 * @param characterLimit
-	 *            el limite de <code>Character</code> que quiero que el campo
-	 *            tenga.
+	 *            el limite de <code>Character</code> que quiero que el campo tenga.
 	 */
 	public static void isLetter(final JTextComponent field, final int characterLimit) {
 		field.addKeyListener(new KeyAdapter() {
+			private boolean esLetra = true;
+
 			@Override
 			public void keyReleased(KeyEvent e) {
+				//
 				aplicarLimite(field, characterLimit);
 				for (int i = 0; i < field.getText().length(); i++) {
 
 					if (!isLetter(new Character(field.getText().charAt(i)))) {
 						addEventError(field);
 						field.getToolkit().beep();
-						if (esLetras) {
-							esLetras = false;
-							errorGlobal++;
+						if (esLetra) {
+							esLetra = false;
+							errorLetras++;
 						}
 						break;
 					} else {
-						if (!esLetras) {
-							esLetras = true;
-							errorGlobal--;
+						if (!esLetra) {
+							esLetra = true;
+							errorLetras--;
 						}
 
 					}
 
 				}
-
+				if (field.getText().isEmpty()) {
+					if (!esLetra) {
+						esLetra = true;
+						errorLetras--;
+					}
+				}
 			}
 		});
 	}
 
 	/**
-	 * Agrega un comportamiento a un campo para que permita todo, y solo aplica
-	 * un limite de <code>Character</code> a este campo, este metodo debe
-	 * llamarse en el constructor de la clase que lo va a usar.
+	 * Agrega un comportamiento a un campo para que permita todo, y solo aplica un
+	 * limite de <code>Character</code> a este campo, este metodo debe llamarse en
+	 * el constructor de la clase que lo va a usar.
 	 * 
 	 * <p>
 	 * agregando un <code>keyReleased</code> aplico el metodo
@@ -558,8 +563,7 @@ public class validation {
 	 * @param field
 	 *            el campo al que le quiero dar la accion.
 	 * @param characterLimit
-	 *            el limite de <code>Character</code> que quiero que el campo
-	 *            tenga.
+	 *            el limite de <code>Character</code> que quiero que el campo tenga.
 	 */
 	public static void isAll(final JTextComponent field, final int characterLimit) {
 		field.addKeyListener(new KeyAdapter() {
@@ -571,37 +575,36 @@ public class validation {
 	}
 
 	/**
-	 * <code>boolean vacio = false, blanco = false, primeroIndex = false;</code>
-	 * una variable para cada validacion por ahora solo 3 campos: vacios, campos
-	 * con el primero caracter en blanco y comoBox con el primer indice
-	 * seleccionado.
+	 * <code>boolean vacio = false, blanco = false, primeroIndex = false;</code> una
+	 * variable para cada validacion por ahora solo 3 campos: vacios, campos con el
+	 * primero caracter en blanco y comoBox con el primer indice seleccionado.
 	 * <p>
-	 * <code>int numeroErrores = 0;</code> contador de errores, este contador va
-	 * a aumentar 1 valor por cada error diferente.
+	 * <code>int numeroErrores = 0;</code> contador de errores, este contador va a
+	 * aumentar 1 valor por cada error diferente.
 	 * <p>
-	 * <code>each instanceof JTextComponent</code> verifico q el campo sea uno
-	 * de texto.
+	 * <code>each instanceof JTextComponent</code> verifico q el campo sea uno de
+	 * texto.
 	 * <p>
 	 * si mi campo de texto esta vacio cambio vacio a true y aumento un valor a
-	 * <code>numeroErrores</code> pero si otro campo me llega a dar este error
-	 * ya no incremento <code>numeroErrores</code>
+	 * <code>numeroErrores</code> pero si otro campo me llega a dar este error ya no
+	 * incremento <code>numeroErrores</code>
 	 * <p>
-	 * si el primer caracter es un campo en blanco cambio blanco a true y
-	 * aumento un valor en <code>numeroErrores</code>. si caigo aqui existe la
-	 * posibilidad de tener 2 errores de tipo distinto y si otro campo da este
-	 * error no debe aumentar a <code>numeroErrores</code>
+	 * si el primer caracter es un campo en blanco cambio blanco a true y aumento un
+	 * valor en <code>numeroErrores</code>. si caigo aqui existe la posibilidad de
+	 * tener 2 errores de tipo distinto y si otro campo da este error no debe
+	 * aumentar a <code>numeroErrores</code>
 	 * <p>
 	 * yo usare el primer index de un <code>JcomboBox</code> para validar los
 	 * <code>JcomboBox</code>. si tengo seleccionado el primero index de un
 	 * <code>JcomboBox</code> me da error de "seleccione una opcion" cambio
 	 * primeroIndex a true y aumento un valor a <code>numeroErrores</code>, asi
-	 * serian 3 errores dinstintos y si otro Objeto da este error no aumento
-	 * nada a <code>numeroErrores</code>.
+	 * serian 3 errores dinstintos y si otro Objeto da este error no aumento nada a
+	 * <code>numeroErrores</code>.
 	 * <p>
-	 * despues de haber recorrido todos los Objetos verifico si hay errores. si
-	 * son mas de 1 errores entonces tengo multiple fallas es decir campos
-	 * vacios, campos en blanco al inicio , comboBox no seleccionados o error de
-	 * solo numeros, solo letras y Emails.
+	 * despues de haber recorrido todos los Objetos verifico si hay errores. si son
+	 * mas de 1 errores entonces tengo multiple fallas es decir campos vacios,
+	 * campos en blanco al inicio , comboBox no seleccionados o error de solo
+	 * numeros, solo letras y Emails.
 	 * <p>
 	 * si solo tube un error significa que puedo filtrarlo y mostrar un msj mas
 	 * personalizado a los campos q tubieron ese error.
@@ -610,9 +613,9 @@ public class validation {
 	 * <p>
 	 * 
 	 * @param fields
-	 *            son todos los campos a los que se les va a validar si son
-	 *            vacios o si tienen espacios en blanco, en caso de un
-	 *            <code>JComboBox</code> valida el primer index.
+	 *            son todos los campos a los que se les va a validar si son vacios o
+	 *            si tienen espacios en blanco, en caso de un <code>JComboBox</code>
+	 *            valida el primer index.
 	 */
 
 	public static boolean field(Object... fields) {
@@ -644,7 +647,7 @@ public class validation {
 				}
 			}
 		}
-		if ((numeroErrores + errorGlobal) > 1) {
+		if ((numeroErrores + (errorEmail + errorNumero + errorLetras)) > 1) {
 			JOptionPane.showMessageDialog(null, getMsjMultipleErrors(), "Multiple Errores", JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
@@ -660,18 +663,19 @@ public class validation {
 			}
 			return false;
 		}
-		if (errorGlobal == 1) {
-			if (!esNumero) {
-				JOptionPane.showMessageDialog(null, getMsjSoloNumero(), "Solo números", JOptionPane.ERROR_MESSAGE);
-			}
-			if (!esLetras) {
-				JOptionPane.showMessageDialog(null, getMsjSoloLetra(), "Solo letras", JOptionPane.ERROR_MESSAGE);
-			}
-
-			if (!esEmail) {
-				JOptionPane.showMessageDialog(null, getMsjEmail(), "Verifique el email", JOptionPane.ERROR_MESSAGE);
-			}
+		if (errorNumero == 1) {
+			JOptionPane.showMessageDialog(null, getMsjSoloNumero(), "Solo números", JOptionPane.ERROR_MESSAGE);
 			return false;
+		}
+		if (errorLetras == 1) {
+			JOptionPane.showMessageDialog(null, getMsjSoloLetra(), "Solo letras", JOptionPane.ERROR_MESSAGE);
+			return false;
+		}
+
+		if (errorEmail == 1) {
+			JOptionPane.showMessageDialog(null, getMsjEmail(), "Verifique el email", JOptionPane.ERROR_MESSAGE);
+			return false;
+
 		}
 		return true;
 	}
@@ -696,8 +700,8 @@ public class validation {
 	 * uso futuro
 	 *
 	 *
-	 * // Convertir object en integer: @SuppressWarnings("unused") private
-	 * static int ConvertirObjectToInt(Object Obj) { int NumInt =
+	 * // Convertir object en integer: @SuppressWarnings("unused") private static
+	 * int ConvertirObjectToInt(Object Obj) { int NumInt =
 	 * Integer.parseInt(ConvertirObjectToString(Obj)); return NumInt; }
 	 * 
 	 * // Convertir objeto en double: @SuppressWarnings("unused") private double
@@ -706,12 +710,12 @@ public class validation {
 	 * 
 	 * // Convierte un object en boolean: @SuppressWarnings({ "unused",
 	 * "static-access" }) private boolean ConvertirObjectToBoolean(Object Obj) {
-	 * String CadBooleana = this.ConvertirObjectToString(Obj); Boolean booleano
-	 * = new Boolean(CadBooleana); return booleano; }
+	 * String CadBooleana = this.ConvertirObjectToString(Obj); Boolean booleano =
+	 * new Boolean(CadBooleana); return booleano; }
 	 * 
 	 * // Convierte un object en string: private static String
-	 * ConvertirObjectToString(Object Obj) { String Str = ""; if (Obj != null) {
-	 * Str = Obj.toString(); } return Str; }
+	 * ConvertirObjectToString(Object Obj) { String Str = ""; if (Obj != null) { Str
+	 * = Obj.toString(); } return Str; }
 	 ****/
 
 }
